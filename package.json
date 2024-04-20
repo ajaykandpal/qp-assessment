@@ -1,0 +1,31 @@
+{
+  "name": "questionpro",
+  "version": "1.0.0",
+  "description": "questionpro-assignment",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon ./build/index.js",
+    "start-dev": "tsc && npm dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ajaykandpal",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.5",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.3",
+    "sequelize-typescript": "^2.1.6",
+    "zod": "^3.22.5"
+  }
+}
