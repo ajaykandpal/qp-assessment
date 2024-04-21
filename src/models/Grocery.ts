@@ -1,4 +1,11 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript";
+import {
+  Model,
+  Table,
+  Column,
+  DataType,
+  ForeignKey,
+} from "sequelize-typescript";
+import { Order } from "./Order";
 
 @Table({
   tableName: Grocery.GROCERY_TABLE_NAME,

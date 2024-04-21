@@ -4,6 +4,7 @@ import GroceryRouter from "./router/GroceryRouter";
 import UserRouter from "./router/UserRouter";
 import * as dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import OrderRouter from "./router/OrderRouter";
 
 class App {
   public app: Application;
@@ -22,7 +23,6 @@ class App {
   }
 
   protected databaseSync(): void {
-    // console.log("databaseSync");
     const db = new Database();
     db.sequelize?.sync();
   }
@@ -34,6 +34,8 @@ class App {
 
     this.app.use("/api/v1/grocery", GroceryRouter);
     this.app.use("/api/v1/users", UserRouter);
+    this.app.use("/api/v1/order", OrderRouter);
+
     //signup
     //login
   }

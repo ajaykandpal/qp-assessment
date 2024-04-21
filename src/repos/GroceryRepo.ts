@@ -11,13 +11,6 @@ interface IGroceryRepo {
 export class GroceryRepo implements IGroceryRepo {
   async save(grocery: Grocery): Promise<void> {
     try {
-      // console.log(
-      //   "here now",
-      //   grocery.name,
-      //   grocery.description,
-      //   grocery.stock,
-      //   grocery.price
-      // );
       await Grocery.create({
         name: grocery.name,
         description: grocery.description,

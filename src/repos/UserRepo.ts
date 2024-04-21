@@ -34,20 +34,13 @@ export class UserRepo implements IUserRepo {
         throw new Error("User not found!");
       }
       //match password
-      console.log(user_details.password, user.password);
-      if (
-        !(user_details.password === user.password)
-        // (await bcrypt.compare(user_details.password, user.password))
-      ) {
+      if (!(user_details.password === user.password)) {
         throw new Error("Wrong Password!");
       }
       const token = jwt.sign({ id: user.id }, "shhhh", {
         expiresIn: "2h",
       });
       user.token = token;
-      // await user.update({
-      //   token: token,
-      // });
       user.password = "";
       return user;
     } catch (error) {
