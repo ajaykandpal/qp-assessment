@@ -64,7 +64,6 @@ class GroceryController {
   async findAll(req: Request, res: Response) {
     try {
       const new_Grocery = await new GroceryRepo().retrieveAll();
-
       res.status(200).json({
         status: "Ok!",
         message: "Successfully fetched all Grocery data!",

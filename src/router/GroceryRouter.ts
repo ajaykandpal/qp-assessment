@@ -5,22 +5,28 @@ import {
   createGrocerySchema,
   updateGrocerySchema,
 } from "../schema/GroceryScehma";
+import authGuard from "./AuthGuard";
+import adminGuard from "./AdminGuard";
 
 class GroceryRoutes extends BaseRoutes {
   public routes(): void {
     this.router.post(
       "",
       validate(createGrocerySchema),
+      authGuard,
+      adminGuard,
       GroceryController.create
     );
     this.router.patch(
       "/:id",
+      authGuard,
+      adminGuard,
       validate(updateGrocerySchema),
       GroceryController.update
     );
-    this.router.delete("/:id", GroceryController.delete);
-    this.router.get("", GroceryController.findAll);
-    this.router.get("/:id", GroceryController.findById);
+    this.router.delete("/:id", authGuard, adminGuard, GroceryController.delete);
+    this.router.get("", authGuard, GroceryController.findAll);
+    this.router.get("/:id", authGuard, GroceryController.findById);
   }
 }
 

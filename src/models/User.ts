@@ -10,6 +10,7 @@ export class User extends Model {
   public static USER_EMAIL = "email" as string;
   public static USER_PASSWORD = "password" as string;
   public static USER_ROLE = "role" as string; //admin or normal
+  public static USER_TOKEN = "token" as string;
 
   @Column({
     type: DataType.INTEGER,
@@ -29,6 +30,7 @@ export class User extends Model {
   @Column({
     type: DataType.STRING(100),
     field: User.USER_EMAIL,
+    unique: true,
     allowNull: false,
   })
   email!: string;
@@ -46,4 +48,10 @@ export class User extends Model {
     defaultValue: "normal",
   })
   role!: string;
+
+  @Column({
+    type: DataType.STRING(100),
+    field: User.USER_TOKEN,
+  })
+  token!: string;
 }

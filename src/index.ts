@@ -1,6 +1,9 @@
 import express, { Application, Request, Response } from "express";
 import Database from "./config/database";
 import GroceryRouter from "./router/GroceryRouter";
+import UserRouter from "./router/UserRouter";
+import * as dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 class App {
   public app: Application;
@@ -15,6 +18,7 @@ class App {
   protected plugins(): void {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cookieParser());
   }
 
   protected databaseSync(): void {
@@ -29,12 +33,13 @@ class App {
     });
 
     this.app.use("/api/v1/grocery", GroceryRouter);
+    this.app.use("/api/v1/users", UserRouter);
     //signup
     //login
   }
 }
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 const app = new App().app;
 
 app.listen(port, () => {
